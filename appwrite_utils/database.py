@@ -32,7 +32,7 @@ class DatabaseUtils:
         """Get all documents from a collection with pagination."""
         try:
             if limit > 0:
-                queries = (queries or []) + [QueryBuilder.limit(limit)]
+                queries = (queries or []).append(QueryBuilder.limit(limit))
             
             response = self.client.execute_with_retry(
                     self.databases.list_documents,
