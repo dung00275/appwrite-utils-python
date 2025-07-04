@@ -27,37 +27,22 @@ class DatabaseUtils:
         collection_id: str,
         database_id: str = "default",
         queries: Optional[List[str]] = None,
-        limit: int = 100,
-        offset: int = 0
+        limit: int = -1
     ) -> List[DocumentData]:
         """Get all documents from a collection with pagination."""
         try:
-            all_documents = []
-            current_offset = offset
+            if limit > 0:
+                queries = (queries or []) + [QueryBuilder.limit(limit)]
             
-            while True:
-                response = self.client.execute_with_retry(
+            response = self.client.execute_with_retry(
                     self.databases.list_documents,
                     database_id,
                     collection_id,
-                    queries=queries or [],
-                    limit=min(limit, 100),  # Appwrite max limit is 100
-                    offset=current_offset
+                    queries=queries or []
                 )
                 
-                documents = response.get('documents', [])
-                all_documents.extend(documents)
-                
-                # Check if we've reached the end
-                if len(documents) < limit or len(all_documents) >= limit:
-                    break
-                
-                current_offset += len(documents)
-                
-                # Small delay to avoid rate limiting
-                time.sleep(0.1)
-            
-            return all_documents[:limit]
+            documents = response.get('documents', [])
+            return documents
             
         except Exception as e:
             if self.logger:
