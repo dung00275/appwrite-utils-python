@@ -305,3 +305,103 @@ class DatabaseUtils:
             if isinstance(appwrite_error, AppwriteException) and appwrite_error.code == 404:
                 return False
             raise appwrite_error 
+
+    def get_document_by_id(
+        self,
+        collection_id: str,
+        document_id: str,
+        database_id: str = "default"
+    ) -> Optional[DocumentData]:
+        """Get a single document by its ID."""
+        try:
+            return self.client.execute_with_retry(
+                self.databases.get_document,
+                database_id,
+                collection_id,
+                document_id
+            )
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Failed to get document {document_id} in {collection_id}: {str(e)}")
+            raise ErrorHandler.handle_appwrite_error(e)
+
+    def update_document_by_id(
+        self,
+        collection_id: str,
+        document_id: str,
+        update_data: Dict[str, Any],
+        database_id: str = "default"
+    ) -> Optional[DocumentData]:
+        """Update a single document by its ID."""
+        try:
+            return self.client.execute_with_retry(
+                self.databases.update_document,
+                database_id,
+                collection_id,
+                document_id,
+                data=update_data
+            )
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Failed to update document {document_id} in {collection_id}: {str(e)}")
+            raise ErrorHandler.handle_appwrite_error(e)
+
+    def delete_document_by_id(
+        self,
+        collection_id: str,
+        document_id: str,
+        database_id: str = "default"
+    ) -> bool:
+        """Delete a single document by its ID."""
+        try:
+            self.client.execute_with_retry(
+                self.databases.delete_document,
+                database_id,
+                collection_id,
+                document_id
+            )
+            return True
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Failed to delete document {document_id} in {collection_id}: {str(e)}")
+            raise ErrorHandler.handle_appwrite_error(e)
+
+    def update_document_by_query(
+        self,
+        collection_id: str,
+        filter_query: str,
+        update_data: Dict[str, Any],
+        database_id: str = "default"
+    ) -> Optional[DocumentData]:
+        """Update the first document that matches a filter query. Raise error if none found."""
+        # Get documents matching the query
+        documents = self.get_all_documents(
+            collection_id=collection_id,
+            database_id=database_id,
+            queries=[filter_query],
+            limit=1
+        )
+        if not documents:
+            raise ErrorHandler.handle_appwrite_error(Exception("No documents found for the given query."))
+        document_id = documents[0].get("$id")
+        if not document_id:
+            raise ErrorHandler.handle_appwrite_error(Exception("Document does not have an $id field."))
+        return self.update_document_by_id(
+            collection_id=collection_id,
+            document_id=document_id,
+            update_data=update_data,
+            database_id=database_id
+        )
+
+    def delete_documents_by_query(
+        self,
+        collection_id: str,
+        filter_query: str,
+        database_id: str = "default"
+    ) -> int:
+        """Delete multiple documents that match a filter query."""
+        return self.batch_delete_documents(
+            collection_id=collection_id,
+            filter_query=filter_query,
+            database_id=database_id
+        ) 
