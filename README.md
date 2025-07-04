@@ -29,12 +29,12 @@ pip install appwrite-utils
 
 ### From GitHub
 ```bash
-pip install git+https://github.com/yourusername/appwrite-utils-python.git
+pip install git+https://github.com/dung00275/appwrite-utils-python.git
 ```
 
 ### Development Installation
 ```bash
-git clone https://github.com/yourusername/appwrite-utils-python.git
+git clone https://github.com/dung00275/appwrite-utils-python.git
 cd appwrite-utils-python
 pip install -e .
 ```
@@ -242,9 +242,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- 📖 [Documentation](https://github.com/yourusername/appwrite-utils-python#readme)
-- 🐛 [Bug Reports](https://github.com/yourusername/appwrite-utils-python/issues)
-- 💡 [Feature Requests](https://github.com/yourusername/appwrite-utils-python/issues)
+- 📖 [Documentation](https://github.com/dung00275/appwrite-utils-python#readme)
+- 🐛 [Bug Reports](https://github.com/dung00275/appwrite-utils-python/issues)
+- 💡 [Feature Requests](https://github.com/dung00275/appwrite-utils-python/issues)
 - 📧 [Email Support](mailto:hoangdung00275@gmail.com)
 
 ## Changelog

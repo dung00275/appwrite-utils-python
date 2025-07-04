@@ -14,7 +14,7 @@ setup(
     description="A collection of utilities and extensions for Appwrite",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/appwrite-utils-python",
+    url="https://github.com/dung00275/appwrite-utils-python",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -42,8 +42,8 @@ setup(
     },
     keywords="appwrite, utilities, extensions, python",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/appwrite-utils-python/issues",
-        "Source": "https://github.com/yourusername/appwrite-utils-python",
-        "Documentation": "https://github.com/yourusername/appwrite-utils-python#readme",
+        "Bug Reports": "https://github.com/dung00275/appwrite-utils-python/issues",
+        "Source": "https://github.com/dung00275/appwrite-utils-python",
+        "Documentation": "https://github.com/dung00275/appwrite-utils-python#readme",
     },
 ) 

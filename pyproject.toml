@@ -46,10 +46,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/appwrite-utils-python"
-Documentation = "https://github.com/yourusername/appwrite-utils-python#readme"
-Repository = "https://github.com/yourusername/appwrite-utils-python"
-"Bug Tracker" = "https://github.com/yourusername/appwrite-utils-python/issues"
+Homepage = "https://github.com/dung00275/appwrite-utils-python"
+Documentation = "https://github.com/dung00275/appwrite-utils-python#readme"
+Repository = "https://github.com/dung00275/appwrite-utils-python"
+"Bug Tracker" = "https://github.com/dung00275/appwrite-utils-python/issues"
 
 [project.scripts]
 appwrite-utils = "appwrite_utils.cli:main"

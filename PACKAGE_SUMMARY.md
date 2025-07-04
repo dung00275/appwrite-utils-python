@@ -183,11 +183,8 @@ python -m pytest tests/ --cov=appwrite_utils
 ## 📋 Next Steps
 
 1. **Update Configuration Files**:
-   - Replace `yourusername` with your actual GitHub username in:
-     - `setup.py`
-     - `pyproject.toml`
-     - `README.md`
-   - Update author information in configuration files
+   - All GitHub URLs have been updated to use `dung00275`
+   - Author information has been updated to Dung Vu
 
 2. **Initialize Git Repository**:
    ```bash
@@ -195,7 +192,7 @@ python -m pytest tests/ --cov=appwrite_utils
    git add .
    git commit -m "Initial commit: Appwrite Utils Python library"
    git branch -M main
-   git remote add origin https://github.com/yourusername/appwrite-utils-python.git
+   git remote add origin https://github.com/dung00275/appwrite-utils-python.git
    git push -u origin main
    ```
 
@@ -234,12 +231,12 @@ To use this library in other projects:
 
 1. **Add as Git Submodule**:
    ```bash
-   git submodule add https://github.com/yourusername/appwrite-utils-python.git libs/appwrite-utils
+   git submodule add https://github.com/dung00275/appwrite-utils-python.git libs/appwrite-utils
    ```
 
 2. **Install from GitHub**:
    ```bash
-   pip install git+https://github.com/yourusername/appwrite-utils-python.git
+   pip install git+https://github.com/dung00275/appwrite-utils-python.git
    ```
 
 3. **Copy and Customize**:
